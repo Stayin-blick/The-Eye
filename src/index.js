@@ -14,13 +14,11 @@ client.on('ready', (c) => {
     console.log(`${c.user.username} is online`);
 });
 
-client.on('messageCreate', (message) => {
-    if (message.author.bot) {
-        return;
-    }
+client.on('interactionCreate', (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
 
-    if (message.content === 'hello' , 'gm') {
-        message.reply(`morning, ${message.author}`)
+    if (interaction.commandName === 'hey') {
+        interaction.reply('hey')
     }
 })
 
