@@ -4,11 +4,11 @@ const { REST, Routes, ApplicationCommandOptionType } = require("discord.js");
 const commands = [
   {
     name: "gm",
-    description: "replies with morning",
+    description: "replies with morning.",
   },
   {
     name: "gn",
-    description: "replies with night",
+    description: "replies with night.",
   },
   {
     name: 'add',
@@ -41,6 +41,10 @@ const commands = [
             required: true,
         }
     ]
+  },
+  {
+    name: "nft-link",
+    description: "Magiceden link for Wall of gains NFT.",
   },
 ];
 

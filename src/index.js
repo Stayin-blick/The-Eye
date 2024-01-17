@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
 
 const client = new Client({
   intents: [
@@ -30,6 +30,16 @@ client.on('interactionCreate', (interaction) => {
         const num2 = interaction.options.get('second-number').value;
 
         interaction.reply(`The sum is ${num1 + num2}`)
+    }
+
+    if (interaction.commandName === 'nft-link') {
+      const embed = new EmbedBuilder()
+        .setTitle("Magiceden - Wall Of Gains")
+        .setDescription("Link to buy Wall Of Gains NFT's.")
+        .setColor("Random")
+        .setURL("https://magiceden.io/marketplace/yoooodegens?attributes=%7B%22BACKGROUND%22%3A%5B%22Black%22%5D%7D");
+        
+        interaction.reply({embeds: [embed] })
     }
 })
 
