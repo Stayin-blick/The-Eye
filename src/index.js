@@ -1,4 +1,4 @@
-const { Client, IntentsBitField } = require("discord.js");
+const { Client, IntentsBitField } = require('discord.js');
 
 const client = new Client({
   intents: [
@@ -11,6 +11,16 @@ const client = new Client({
 
 client.on('ready', (c) => {
     console.log(`${c.user.username} is online`);
+});
+
+client.on('messageCreate', (message) => {
+    if (message.author.bot) {
+        return;
+    }
+
+    if (message.content === 'hello' , 'gm') {
+        message.reply(`morning, ${message.author}`)
+    }
 })
 
 client.login(
