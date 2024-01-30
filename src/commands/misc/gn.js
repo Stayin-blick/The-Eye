@@ -1,11 +1,11 @@
-// module.exports = {
-//     name: "gn",
-//     description: "replies with good night.",
-//     // devonly: Boolean,
-//     // testonly: Boolean,
-//     // options:Object[],
+module.exports = {
+  name: 'gn',
+  description: 'replies with good night.',
+  // devonly: Boolean,
+  testonly: true,
+  // options:Object[],
 
-//     callback: (client, interaction) => {
-//         interaction.reply(`Good Night ${client.ws.ping}ms`)
-//     }
-//   }
+  callback: (client, interaction) => {
+    interaction.reply(`Good Night ${client.ws.gn}ms`);
+  },
+};

@@ -1,7 +1,7 @@
-const { testServer } = require("../../../config.json");
-const areCommandsDifferent = require("../../utils/areCommandsDifferent");
-const getApplicationCommands = require("../../utils/getApplicationCommands");
-const getLocalCommands = require("../../utils/getLocalCommands");
+const { testServer } = require('../../../config.json');
+const areCommandsDifferent = require('../../utils/areCommandsDifferent');
+const getApplicationCommands = require('../../utils/getApplicationCommands');
+const getLocalCommands = require('../../utils/getLocalCommands');
 
 module.exports = async (client) => {
   try {
@@ -21,7 +21,7 @@ module.exports = async (client) => {
       if (existingCommand) {
         if (localCommand.deleted) {
           await applicationCommands.delete(existingCommand.id);
-          console.log(`deleted command "${name}"`);
+          console.log(`🗑 Deleted command "${name}".`);
           continue;
         }
 
@@ -31,12 +31,12 @@ module.exports = async (client) => {
             options,
           });
 
-          console.log(`edited command "${name}".`);
+          console.log(`🔁 Edited command "${name}".`);
         }
       } else {
         if (localCommand.deleted) {
           console.log(
-            `skipping registering command "${name}" as it's set to delete`
+            `⏩ Skipping registering command "${name}" as it's set to delete.`
           );
           continue;
         }
@@ -47,10 +47,10 @@ module.exports = async (client) => {
           options,
         });
 
-        console.log(`registered command "${name}".`);
+        console.log(`👍 Registered command "${name}."`);
       }
     }
   } catch (error) {
-    console.log(`there was an error: ${error}`);
+    console.log(`TThere was an error: ${error}`);
   }
 };
