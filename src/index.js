@@ -18,10 +18,10 @@ const client = new Client({
     console.log("connected to database");
 
     eventHandler(client)
+
+    client.login(process.env.TOKEN);
   } catch (error) {
     console.log(`there was an error: ${error}`);
   }
 
 })();
-
-client.login(process.env.TOKEN);
