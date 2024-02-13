@@ -4,7 +4,7 @@ const {
   ApplicationCommandOptionType,
   AttachmentBuilder,
 } = require("discord.js");
-const canvacord = require('canvacord');
+const canvacord = require("canvacord");
 const calculateLevelXp = require("../../utils/calculateLevelXp");
 const Level = require("../../models/Level");
 
@@ -22,7 +22,7 @@ module.exports = {
 
     await interaction.deferReply();
 
-    const mentionedUserId = interaction.options.get('target-user')?.value;
+    const mentionedUserId = interaction.options.get("target-user")?.value;
     const targetUserId = mentionedUserId || interaction.member.id;
     const targetUserObj = await interaction.guild.members.fetch(targetUserId);
 
@@ -40,7 +40,9 @@ module.exports = {
       return;
     }
 
-    let allLevels = await Level.find({ guildId: interaction.guild.id }).select('-_id userId level xp');
+    let allLevels = await Level.find({ guildId: interaction.guild.id }).select(
+      "-_id userId level xp"
+    );
 
     allLevels.sort((a, b) => {
       if (a.level === b.level) {
@@ -50,31 +52,30 @@ module.exports = {
       }
     });
 
-    let currentRank = allLevels.findIndex((lvl) => lvl.userId === targetUserId) + 1;
+    let currentRank =
+      allLevels.findIndex((lvl) => lvl.userId === targetUserId) + 1;
 
     const rank = new canvacord.Rank()
-    .setAvatar(targetUserObj.user.displayAvatarURL({size: 4096}))
-    .setRank(currentRank)
-    .setLevel(fetchedLevel.level)
-    .setCurrentXP(fetchedLevel.xp)
-    .setRequiredXP(calculateLevelXp(fetchedLevel.level))
-    .setStatus(targetUserObj.presence.status)
-    .setProgressBar('#FFC300', 'COLOR')
-    .setUsername(targetUserObj.user.username)
-    .setDiscriminator(targetUserObj.user.discriminator);
+      .setAvatar(targetUserObj.user.displayAvatarURL({ size: 4096 }))
+      .setRank(currentRank)
+      .setLevel(fetchedLevel.level)
+      .setCurrentXP(fetchedLevel.xp)
+      .setRequiredXP(calculateLevelXp(fetchedLevel.level))
+      .setStatus(targetUserObj.presence.status)
+      .setProgressBar("#FFC300", "COLOR")
+      .setUsername(targetUserObj.user.username)
+      .setDiscriminator(targetUserObj.user.discriminator);
 
     const data = await rank.build();
     const attachment = new AttachmentBuilder(data);
     interaction.editReply({ files: [attachment] });
-
-
   },
 
-  name: 'level',
+  name: "level",
   description: "shows your or someones level",
   options: [
     {
-      name: 'target-user',
+      name: "target-user",
       description: "the user whose level you want to see",
       type: ApplicationCommandOptionType.Mentionable,
     },
