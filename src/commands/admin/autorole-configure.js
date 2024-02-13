@@ -18,7 +18,7 @@ module.exports = {
       return;
     }
 
-    const targetRoleId = interaction.options.get('role').value;
+    const targetRoleId = interaction.options.get("role").value;
 
     try {
       await interaction.deferReply();
@@ -50,11 +50,11 @@ module.exports = {
     }
   },
 
-  name: 'autorole-congiure',
+  name: "autorole-congiure",
   description: "configure your auto-role for this server",
   options: [
     {
-      name: 'role',
+      name: "role",
       description: "the role you want users to get on join",
       type: ApplicationCommandOptionType.Role,
       required: true,

@@ -27,7 +27,7 @@ module.exports = {
     }
   },
 
-  name: 'autorole-disable',
+  name: "autorole-disable",
   description: "Disable auto-role in this server.",
   permissionsRequired: [PermissionFlagsBits.Administrator],
 };

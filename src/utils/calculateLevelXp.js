@@ -6,7 +6,7 @@ module.exports = (level) => {
   const growthFactor = 1.2; // Adjust this value as needed
 
   // Calculate the XP required for the given level
-  const requiredXP = Math.floor(baseXP * (Math.pow(growthFactor, level - 1)));
+  const requiredXP = Math.floor(baseXP * Math.pow(growthFactor, level - 1));
 
   return requiredXP;
 };
