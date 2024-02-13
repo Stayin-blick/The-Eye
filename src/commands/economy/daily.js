@@ -6,7 +6,7 @@ const baseMultiplier = 1;
 const streakMultiplierIncrement = 0.05;
 
 module.exports = {
-  name: "daily",
+  name: 'daily',
   description: "collect daily reqard",
   /**
    *
