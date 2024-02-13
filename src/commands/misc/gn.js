@@ -4,6 +4,6 @@ module.exports = {
 
 
   callback: (client, interaction) => {
-    interaction.reply(`Good Night ${interaction.user.username}.`);
+    interaction.reply(`Good Night <@${interaction.user.id}>.`);
   },
 };
