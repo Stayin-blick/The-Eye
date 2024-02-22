@@ -50,7 +50,7 @@ module.exports = {
     }
   },
 
-  name: "autorole-congiure",
+  name: "autorole-configure",
   description: "configure your auto-role for this server",
   options: [
     {
